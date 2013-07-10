@@ -14,7 +14,7 @@ An example INTERCOM_REDIS_CONFIG would be `-h server.redistogo.com -p <port> -a 
 Usage
 =====
 
-Get many nodes around the office / world to run `./intercom.sh &`
+Get many nodes around the office / world to run `intercom &`
 
 To broadcast a message, use:
 
