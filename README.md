@@ -20,7 +20,7 @@ To broadcast a message, use:
 
 `redis-cli $INTERCOM_REDIS_CONFIG set intercom-message "hello, world"`
 
-Integrate intercom into your apps by writing messages to `intercom-message`
+Integrate intercom into your apps by setting the key `intercom-message`
 
 
 ```
