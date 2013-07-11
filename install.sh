@@ -1,7 +1,7 @@
 
 PREFIX="/usr/local/bin"
 INTERCOM_BIN="$PREFIX/intercom"
-curl -o $INTERCOM_BIN $INTERCOM_URL/intercom
+curl -o $INTERCOM_BIN $URL/intercom
 
 chmod +x $INTERCOM_BIN
 
