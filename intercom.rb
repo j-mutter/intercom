@@ -14,12 +14,16 @@ put '/' do
 end
 
 get '/install' do
-  installer = File.read('./install.sh')
+  installer = File.read('scripts/install.sh')
   ["#!/usr/bin/env bash", "URL=#{access_url}/", installer].join("\n")
 end
 
 get '/intercom' do
-  script = File.read('./intercom.sh')
+  script = File.read('scripts/intercom.sh')
   ["#!/usr/bin/env bash", "URL=#{access_url}/", script].join("\n")
 end
 
+get '/uninstall' do
+  uninstaller = File.read('scripts/uninstall.sh')
+  ["#!/usr/bin/env bash", "URL=#{access_url}/", uninstaller].join("\n")
+end
