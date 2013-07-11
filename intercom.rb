@@ -20,6 +20,6 @@ end
 
 get '/intercom' do
   script = File.read('./intercom.sh')
-  ["#!/usr/bin/env bash", "URL=#{access_url}/", script].join("\n")
+  ["URL=#{access_url}/", script].join("\n")
 end
 
