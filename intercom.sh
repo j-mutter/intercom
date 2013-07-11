@@ -2,7 +2,7 @@
 LAST=0
 
 while [ 1 ]; do
-  MESSAGE=`redis-cli GET intercom-message`;
+  MESSAGE=`redis-cli $INTERCOM_REDIS_CONFIG GET intercom-message`;
   if [ $MESSAGE != $LAST ]; then
     echo $MESSAGE
     say $MESSAGE
