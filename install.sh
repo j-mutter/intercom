@@ -27,6 +27,7 @@ ask "Do you want to save all intercoms as an itunes playlist? [yn]"
 PLAYLIST=$?
 
 TMP=`mktemp /tmp/intercom.XXXXX`
+PLIST=`mktemp /tmp/intercom-plist.XXXX`
 
 echo "#!/usr/bin/env bash" > $TMP
 echo "PLAYLIST=$PLAYLIST" >> $TMP
@@ -43,7 +44,9 @@ if [ "$SERVICE" = "1" ]; then
   echo "I am going to ask for SUDO to install intercom as a service. Dont panic!"
   echo
   sudo launchctl remove com.boourns.intercom
-  sudo cp ./com.boourns.intercom.plist /Library/LaunchDaemons/com.boourns.intercom.plist
+  curl $URL/plist >> $PLIST
+
+  sudo mv $PLIST /Library/LaunchDaemons/com.boourns.intercom.plist
 
   sudo launchctl load -w /Library/LaunchDaemons/com.boourns.intercom.plist
 fi

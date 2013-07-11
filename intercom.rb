@@ -42,3 +42,7 @@ get '/intercom' do
   ["URL=#{access_url}/", script].join("\n")
 end
 
+get '/plist' do
+  File.read('./com.boourns.intercom.plist')
+end
+
