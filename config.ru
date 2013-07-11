@@ -1,3 +1,3 @@
-require './server/intercom'
+require './intercom'
 run Sinatra::Application
 
