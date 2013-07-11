@@ -1,4 +1,14 @@
 
+function ask {
+  echo $1        # add this line
+  read -n 1 -r
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    return 1
+  else
+     return 0
+  fi
+}
+
 PREFIX="/usr/local/bin"
 INTERCOM_BIN="$PREFIX/intercom"
 curl -o $INTERCOM_BIN $URL/intercom
