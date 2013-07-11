@@ -1,5 +1,7 @@
 Intercom (tm)(c)(r) - Join The Conversation(c)
 
+This is SoundCloud for Twitter
+
 Installing
 ==========
 

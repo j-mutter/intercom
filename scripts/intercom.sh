@@ -1,7 +1,7 @@
 LAST=0
 
 while [ 1 ]; do
-  MESSAGE=`curl $URL`
+  MESSAGE=`curl -s $URL`
 
   if [ "$MESSAGE" != "$LAST" ]; then
     echo $MESSAGE >> /tmp/intercom.log

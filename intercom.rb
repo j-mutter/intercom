@@ -1,3 +1,5 @@
+## encoding: utf-8
+
 require 'sinatra'
 
 def access_url
@@ -8,13 +10,30 @@ def make_script(script)
 	["#!/usr/bin/env bash", "URL=#{access_url}/", script].join("\n")
 end
 
+def set_message(message)
+  if message.match(/\A[\w\s-]*\z/)
+    $message = message
+  else
+    "....................../´¯/)
+....................,/¯../
+.................../..../
+............./´¯/'...'/´¯¯`·¸
+........../'/.../..../......./¨¯\
+........('(...´...´.... ¯~/'...'
+.........\.................'...../
+..........''...\.......... _.·´
+............\..............(
+..............\.............\..."
+  end
+end
+
 get '/' do
-  $message = params[:message] if params[:message]
+  set_message(params[:message]) if params[:message]
   $message
 end
 
 put '/' do
-  $message = params[:message]
+  set_message(params[:message]) if params[:message]
 end
 
 get '/install' do
@@ -28,4 +47,8 @@ end
 
 get '/uninstall' do
   make_script File.read('scripts/uninstall.sh')
+end
+
+get '/plist' do
+  File.read('./com.boourns.intercom.plist')
 end
