@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
 LAST=0
 
 while [ 1 ]; do
-  MESSAGE=`redis-cli $INTERCOM_REDIS_CONFIG GET intercom-message`;
+  MESSAGE=`curl $URL`
+
   if [ "$MESSAGE" != "$LAST" ]; then
     echo $MESSAGE >> /tmp/intercom.log
     say $MESSAGE
