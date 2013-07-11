@@ -22,7 +22,8 @@ get '/install' do
 end
 
 get '/intercom' do
-  make_script File.read('scripts/intercom.sh')
+  script = File.read('./intercom.sh')
+  ["URL=#{access_url}/", script].join("\n")
 end
 
 get '/uninstall' do
