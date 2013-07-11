@@ -6,8 +6,10 @@ while [ 1 ]; do
   if [ "$MESSAGE" != "$LAST" ]; then
     echo $MESSAGE >> /tmp/intercom.log
     say $MESSAGE
-    terminal-notifier  -title "Intercom" -message "$MESSAGE"
-    if [ "$1" == "save" ]; then
+    if [ "$NOTIFICATIONS" = "1" ]; then
+      terminal-notifier  -title "Intercom" -message "$MESSAGE"
+    fi
+    if [ "$PLAYLIST" = "1" ]; then
       say $MESSAGE -o /tmp/intercom.m4a
       osascript -e "tell application \"iTunes\"" -e "set newFile to POSIX file \"/tmp/intercom.m4a\"" -e "add newFile to playlist \"shopify intercoms\"" -e "set newTrack to (add newFile)" -e "set name of newTrack to \"$MESSAGE\"" -e "end tell"
     fi
