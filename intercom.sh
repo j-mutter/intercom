@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 LAST=0
+
 while [ 1 ]; do
   MESSAGE=`redis-cli GET intercom-message`;
   if [ $MESSAGE != $LAST ]; then
