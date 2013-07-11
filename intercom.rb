@@ -5,6 +5,7 @@ def access_url
 end
 
 get '/' do
+  $message = params[:message] if params[:message]
   $message
 end
 
