@@ -38,7 +38,10 @@ mv $TMP $INTERCOM_BIN
 chmod +x $INTERCOM_BIN
 
 if [ "$SERVICE" = "1" ]; then
+  echo
+  echo "==========================================="
   echo "I am going to ask for SUDO to install intercom as a service. Dont panic!"
+  echo
   sudo launchctl remove com.boourns.intercom
   sudo cp ./com.boourns.intercom.plist /Library/LaunchDaemons/com.boourns.intercom.plist
 
