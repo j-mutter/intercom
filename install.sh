@@ -1,8 +1,8 @@
 
 function ask {
   echo $1        # add this line
-  read -n 1 -r
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
+  read -r
+  if [[ $REPLY =~ ^[Yy] ]]; then
     return 1
   else
      return 0
