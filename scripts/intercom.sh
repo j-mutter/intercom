@@ -7,7 +7,7 @@ while [ 1 ]; do
     echo $MESSAGE >> /tmp/intercom.log
     say $MESSAGE
     if [ "$NOTIFICATIONS" = "1" ]; then
-      terminal-notifier  -title "Intercom" -message "$MESSAGE"
+      terminal-notifier  -title "Intercom" -message "$MESSAGE" >/dev/null 2>&1
     fi
     if [ "$PLAYLIST" = "1" ]; then
       say $MESSAGE -o /tmp/intercom.m4a
