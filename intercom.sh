@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-
-touch /tmp/intercom-last
+LAST=0
 
 while [ 1 ]; do
-  redis-cli $INTERCOM_REDIS_CONFIG GET intercom-message > /tmp/intercom-new;
-  DIFF=`diff -q /tmp/intercom-new /tmp/intercom-last 2>/dev/null`
-  if [ "$DIFF" != "" ]; then
-    cat /tmp/intercom-new | say
+  MESSAGE=`redis-cli $INTERCOM_REDIS_CONFIG GET intercom-message`;
+  if [ "$MESSAGE" != "$LAST" ]; then
+    echo $MESSAGE >> /tmp/intercom.log
+    say $MESSAGE
+    terminal-notifier  -title "Intercom" -message "$MESSAGE"
     if [ "$1" == "save" ]; then
-      cat /tmp/intercom-new | /usr/bin/say -o /tmp/intercom.m4a
-      osascript -e "tell application \"iTunes\" to add POSIX file \"/tmp/intercom.m4a\""
+      say $MESSAGE -o /tmp/intercom.m4a
+      osascript -e "tell application \"iTunes\"" -e "set newFile to POSIX file \"/tmp/intercom.m4a\"" -e "add newFile to playlist \"shopify intercoms\"" -e "set newTrack to (add newFile)" -e "set name of newTrack to \"$MESSAGE\"" -e "end tell"
     fi
-    mv /tmp/intercom-new /tmp/intercom-last
+    LAST=$MESSAGE
   fi
   sleep 10
 done

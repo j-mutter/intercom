@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Enabled</key>
+  <true/>
+  <key>GroupName</key>
+  <string>staff</string>
+  <key>KeepAlive</key>
+  <true/>
+  <key>Label</key>
+  <string>com.boourns.intercom</string>
+  <key>Program</key>
+  <string>/usr/local/bin/intercom</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>save</string>
+  </array>
+  <key>QueueDirectories</key>
+  <array/>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>ServiceDescription</key>
+  <string>The Best Thing You've Ever Installed</string>
+  <key>WatchPaths</key>
+  <array/>
+  <key>StandardOutPath</key>
+  <string>/var/log/intercom.log</string>
+</dict>
+</plist>
