@@ -4,6 +4,10 @@ def access_url
   ENV['INTERCOM_URL']
 end
 
+def make_script(script)
+	["#!/usr/bin/env bash", "URL=#{access_url}/", script].join("\n")
+end
+
 get '/' do
   $message = params[:message] if params[:message]
   $message
@@ -14,16 +18,13 @@ put '/' do
 end
 
 get '/install' do
-  installer = File.read('scripts/install.sh')
-  ["#!/usr/bin/env bash", "URL=#{access_url}/", installer].join("\n")
+  make_script File.read('scripts/install.sh')
 end
 
 get '/intercom' do
-  script = File.read('scripts/intercom.sh')
-  ["#!/usr/bin/env bash", "URL=#{access_url}/", script].join("\n")
+  make_script File.read('scripts/intercom.sh')
 end
 
 get '/uninstall' do
-  uninstaller = File.read('scripts/uninstall.sh')
-  ["#!/usr/bin/env bash", "URL=#{access_url}/", uninstaller].join("\n")
+  make_script File.read('scripts/uninstall.sh')
 end
