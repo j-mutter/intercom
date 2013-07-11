@@ -22,7 +22,7 @@ get '/install' do
 end
 
 get '/intercom' do
-  script = File.read('./intercom.sh')
+  script = File.read('scripts/intercom.sh')
   ["URL=#{access_url}/", script].join("\n")
 end
 
