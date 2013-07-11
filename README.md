@@ -1,3 +1,5 @@
+Intercom (tm)(c)(r) - Join The Conversation(c)
+
 Installing
 ==========
 
