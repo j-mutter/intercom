@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+touch /tmp/intercom-last
+
 while [ 1 ]; do
   redis-cli $INTERCOM_REDIS_CONFIG GET intercom-message > /tmp/intercom-new;
   DIFF=`diff -q /tmp/intercom-new /tmp/intercom-last 2>/dev/null`
